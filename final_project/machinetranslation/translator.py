@@ -8,13 +8,16 @@ apikey = os.environ['apikey']
 ''''hide a url with os.environ'''
 url = os.environ['url']
 '''This class provides an Authenticator implementation for IAM'''
-authenticator=IAMAuthenticator("L4EJOY3v1JwOiSH41JAciUlPkfaEoQuloiLl2RZDllQz")
+authenticator=IAMAuthenticator('xAdfI7aLfEmslA7VKyVhnHrQ1SGHHsprW9YBclWoKKkQ')
 '''setup service'''
 language_translator = LanguageTranslatorV3(
     version='2018-05-01',
     authenticator=authenticator)
 '''translating using this url'''
-language_translator.set_service_url(url)
+language_translator.set_service_url('https://api.jp-tok.language-translator.watson.cloud.ibm.com/instances/949fd2b6-98a6-4931-a0b6-ae6275d83f00')
+
+language_translator.set_disable_ssl_verification(True)
+
 def english_to_french(englishtext):
     '''code to translate english to french'''
     translation = language_translator.translate(text=englishtext, model_id = 'en-fr').get_result()
